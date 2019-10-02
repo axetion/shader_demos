@@ -27,7 +27,7 @@ vec4 applyOffset(vec2 uv, int i)
     float tOffset;
     float t = modf(iTime / (on + off), tOffset) * (on + off);
 
-	float x = uv.x + float(t > off) + rand(tOffset - vec2(i) * float(tearpoints * 3)) * offset;
+    float x = uv.x + float(t > off) + rand(tOffset - vec2(i) * float(tearpoints * 3)) * offset;
 
     return (x < 0.0) ? texture(iChannel0, uv) : texture(iChannel0, vec2(x, uv.y));
 }
@@ -39,8 +39,8 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     
     for (int i = 0; i < tearpoints; i++)
     {
-    	y += pow((pow(1.0 - y, n) - lower) * rand(seed + vec2(i)) + lower, 1.0/n);
-        
+        y += pow((pow(1.0 - y, n) - lower) * rand(seed + vec2(i)) + lower, 1.0/n);
+
         if (uv.y < y)  // is point in row
         {
             fragColor = applyOffset(uv, i);

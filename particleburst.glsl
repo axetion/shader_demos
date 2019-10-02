@@ -20,7 +20,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     fragColor = vec4(1.0);
     for (float i = 1.0; i <= NUM_PARTICLES; i++)
     {
-    	float x = (rand(seed + i) - 0.5) * SPEED * iTime;
+        float x = (rand(seed + i) - 0.5) * SPEED * iTime;
         float y = ((rand(seed - i) - 0.5) * SPEED - GRAVITY * iTime) * iTime;
         
         vec2 coord = uv - vec2(x, y) - center;
